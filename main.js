@@ -8,11 +8,18 @@ while (condition) {
             name: "possibleOptions",
             type: "list",
             message: "Please select options",
-            choices: ["view list", "add items in your list", "quit"]
+            choices: ["view list", "add items in your list", "delete items", "quit"]
         }
     ]);
     if (options.possibleOptions == "view list") {
-        console.log(myList);
+        if (options.list === 0 || []) {
+            console.log("Sorry! You have nothing in your list. First Create your list");
+        }
+        else {
+            for (let items of myList) {
+                console.log(`${myList.indexOf(items)}: items`);
+            }
+        }
     }
     else if (options.possibleOptions == "add items in your list") {
         let input = await inquirer.prompt([
@@ -23,6 +30,17 @@ while (condition) {
             }
         ]);
         myList.push(input.items);
+        console.log(myList);
+    }
+    else if (options.possibleOptions == "delete items") {
+        let remove = await inquirer.prompt([
+            {
+                name: "itemsRemove",
+                type: "number",
+                message: "What do you want to delete?"
+            }
+        ]);
+        myList.splice(remove.itemsRemove, 1);
         console.log(myList);
     }
     else {

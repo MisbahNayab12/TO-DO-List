@@ -1,6 +1,6 @@
 {
   "name": "tdl1-to-do-list",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "This is my fourth project of To Do List.",
   "main": "main.js",
   "type": "module",
